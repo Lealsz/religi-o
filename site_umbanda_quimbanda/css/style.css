@@ -1,0 +1,368 @@
+/* Estilos gerais */
+:root {
+  /* Cores base */
+  --primary-color: #8e44ad;
+  --secondary-color: #9b59b6;
+  --accent-color: #673ab7;
+  --text-color: #333;
+  --light-text: #fff;
+  --background-color: #f5f5f5;
+  --sidebar-width: 250px;
+  --header-height: 60px;
+  --transition-speed: 0.3s;
+  
+  /* Cores específicas para Umbanda (tons claros) */
+  --umbanda-primary: #7986cb;
+  --umbanda-secondary: #9fa8da;
+  --umbanda-accent: #5c6bc0;
+  --umbanda-background: #e8eaf6;
+  --umbanda-text: #283593;
+  
+  /* Cores específicas para Quimbanda (tons escuros) */
+  --quimbanda-primary: #b71c1c;
+  --quimbanda-secondary: #d32f2f;
+  --quimbanda-accent: #7f0000;
+  --quimbanda-background: #ffebee;
+  --quimbanda-text: #b71c1c;
+  
+  /* Cores específicas para Tarot (cores ciganas) */
+  --tarot-primary: #7b1fa2;
+  --tarot-secondary: #9c27b0;
+  --tarot-accent: #6a1b9a;
+  --tarot-background: #f3e5f5;
+  --tarot-text: #4a148c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+header {
+  background-color: var(--primary-color);
+  color: var(--light-text);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  color: var(--light-text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.site-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: var(--header-height);
+  left: -var(--sidebar-width);
+  width: var(--sidebar-width);
+  height: calc(100vh - var(--header-height));
+  background-color: var(--secondary-color);
+  transition: left var(--transition-speed) ease;
+  z-index: 99;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 20px 0;
+}
+
+.sidebar-nav li {
+  padding: 0;
+}
+
+.sidebar-nav a {
+  display: block;
+  padding: 15px 20px;
+  color: var(--light-text);
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: background-color var(--transition-speed);
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+  background-color: var(--accent-color);
+}
+
+/* Main Content */
+main {
+  margin-top: var(--header-height);
+  padding: 30px 0;
+  min-height: calc(100vh - var(--header-height));
+}
+
+.content {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-top: 40px;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-top: 30px;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+/* Overlay para fechar o menu em dispositivos móveis */
+.overlay {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  width: 100%;
+  height: calc(100vh - var(--header-height));
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 98;
+  display: none;
+}
+
+.overlay.active {
+  display: block;
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+  .content {
+    padding: 30px;
+  }
+}
+
+@media (min-width: 992px) {
+  .sidebar {
+    left: 0;
+    box-shadow: none;
+  }
+  
+  main {
+    margin-left: var(--sidebar-width);
+  }
+  
+  .menu-toggle {
+    display: none;
+  }
+  
+  .overlay {
+    display: none !important;
+  }
+}
+
+/* Estilos específicos para cada página */
+/* Home Page */
+.home-page header {
+  background-color: var(--primary-color);
+}
+
+.home-page .sidebar {
+  background-color: var(--secondary-color);
+}
+
+.home-page .sidebar-nav a:hover,
+.home-page .sidebar-nav a.active {
+  background-color: var(--accent-color);
+}
+
+.home-page .content {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('../images/africa/africa_religioes_1.jpg');
+  background-size: cover;
+  background-position: center;
+  transition: all 0.5s ease;
+}
+
+.home-page .content:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Umbanda Page - Cores claras */
+.umbanda-page header {
+  background-color: var(--umbanda-primary);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.umbanda-page .sidebar {
+  background-color: var(--umbanda-secondary);
+}
+
+.umbanda-page .sidebar-nav a:hover,
+.umbanda-page .sidebar-nav a.active {
+  background-color: var(--umbanda-accent);
+}
+
+.umbanda-page .content {
+  background-color: var(--umbanda-background);
+  color: var(--umbanda-text);
+  border-radius: 8px;
+  transition: all 0.5s ease;
+}
+
+.umbanda-page h1, 
+.umbanda-page h2, 
+.umbanda-page h3 {
+  color: var(--umbanda-primary);
+}
+
+.umbanda-page .content img {
+  transition: transform 0.3s ease;
+}
+
+.umbanda-page .content img:hover {
+  transform: scale(1.02);
+}
+
+/* Quimbanda Page - Cores escuras */
+.quimbanda-page header {
+  background-color: var(--quimbanda-primary);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.quimbanda-page .sidebar {
+  background-color: var(--quimbanda-secondary);
+}
+
+.quimbanda-page .sidebar-nav a:hover,
+.quimbanda-page .sidebar-nav a.active {
+  background-color: var(--quimbanda-accent);
+}
+
+.quimbanda-page .content {
+  background-color: var(--quimbanda-background);
+  color: var(--text-color);
+  border-radius: 8px;
+  transition: all 0.5s ease;
+}
+
+.quimbanda-page h1, 
+.quimbanda-page h2, 
+.quimbanda-page h3 {
+  color: var(--quimbanda-primary);
+}
+
+.quimbanda-page .content img {
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(183, 28, 28, 0.3);
+}
+
+.quimbanda-page .content img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(183, 28, 28, 0.4);
+}
+
+/* Tarot Page - Cores ciganas */
+.tarot-page header {
+  background-color: var(--tarot-primary);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.tarot-page .sidebar {
+  background-color: var(--tarot-secondary);
+}
+
+.tarot-page .sidebar-nav a:hover,
+.tarot-page .sidebar-nav a.active {
+  background-color: var(--tarot-accent);
+}
+
+.tarot-page .content {
+  background-color: var(--tarot-background);
+  color: var(--text-color);
+  border-radius: 8px;
+  transition: all 0.5s ease;
+}
+
+.tarot-page h1, 
+.tarot-page h2, 
+.tarot-page h3 {
+  color: var(--tarot-primary);
+}
+
+.tarot-page .content img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(123, 31, 162, 0.3);
+}
+
+.tarot-page .content img:hover {
+  transform: scale(1.02) rotate(1deg);
+  box-shadow: 0 6px 16px rgba(123, 31, 162, 0.4);
+}
+
+/* Estilos para imagens */
+.content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer {
+  background-color: var(--primary-color);
+  color: var(--light-text);
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+footer p {
+  margin: 0;
+}
